@@ -74,11 +74,11 @@ function getGenderDescription($audience) {
     $femalePercentage = round(($femaleCount / $total) * 100, 1);
     $unknownPercentage = round(($unknownCount / $total) * 100, 1);
 
-    $output = "Гендерный состав аудитории:\n";
-    $output .= "---------------------------\n";
-    $output .= "Мужчины - $malePercentage%\n";
-    $output .= "Женщины - $femalePercentage%\n";
-    $output .= "Не удалось определить - $unknownPercentage%\n";
+    $output = "Гендерный состав аудитории:<br>";
+    $output .= "---------------------------<br>";
+    $output .= "Мужчины - $malePercentage%<br>";
+    $output .= "Женщины - $femalePercentage%<br>";
+    $output .= "Не удалось определить - $unknownPercentage%<br>";
 
     return $output;
 }
@@ -102,7 +102,7 @@ function getPerfectPartner($surname, $name, $patronymic, $audience) {
     $randomFullName = $randomCompatiblePerson['fullname'];
     $randomPercentage = rand(5000, 10000) / 100;
 
-    return "$fullname + $randomFullName =\n♡ Идеально на $randomPercentage% ♡";
+    return "$fullname + $randomFullName =<br>♡ Идеально на $randomPercentage% ♡";
 }
 
 $example_persons_array = [
@@ -160,14 +160,17 @@ foreach ($example_persons_array as $person) {
     $gender = getGenderFromName($fullname);
     echo "Пол для $fullname: ";
     echo $gender === 1 ? "мужской" : ($gender === -1 ? "женский" : "неопределенный");
-    echo ", Должность: {$person['job']}\n";
-    echo "Полное разбиение: Фамилия: {$fullname_parts['surname']}, Имя: {$fullname_parts['name']}, Отчество: {$fullname_parts['patronymic']}, Должность: {$person['job']}\n";
-    echo "Сокращенное имя: $shortName, Должность: {$person['job']}\n";
-    echo "Перестроенное ФИО: $reconstructedFullname\n";
+    echo ", Должность: {$person['job']}<br>";
+    echo "Полное разбиение: Фамилия: {$fullname_parts['surname']}, Имя: {$fullname_parts['name']}, Отчество: {$fullname_parts['patronymic']}, Должность: {$person['job']}<br>";
+    echo "Сокращенное имя: $shortName, Должность: {$person['job']}<br>";
+    echo "Перестроенное ФИО: $reconstructedFullname<br>";
+    echo "<br>";
 }
 
+echo "<br>";
 echo getGenderDescription($example_persons_array);
 $surname = 'Иванов';
 $name = 'Иван';
 $patronymic = 'Иванович';
+echo "<br>";
 echo getPerfectPartner($surname, $name, $patronymic, $example_persons_array);
